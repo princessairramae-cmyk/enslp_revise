@@ -148,7 +148,7 @@ $jobs=$stmt->fetchAll(PDO::FETCH_ASSOC);
 /* MATERIALS */
 
 $stmt=$conn->query("
-SELECT id,item_name
+SELECT id,item_name,quantity
 FROM inventory_items
 WHERE category='Raw Material'
 AND status='active'
@@ -338,16 +338,17 @@ No etching jobs found
 <div class="mb-3">
 <label>Material</label>
 
-<select name="item_id" class="form-control" required>
+<select name="item_id" id="material" class="form-control" required>
 
 <option value="">Select Material</option>
 
 <?php foreach($materials as $m){ ?>
 
-<option value="<?=$m['id']?>">
-
+    <option 
+value="<?=$m['id']?>"
+data-stock="<?=$m['quantity']?>"
+>
 <?=$m['item_name']?>
-
 </option>
 
 <?php } ?>
@@ -393,7 +394,7 @@ style="display:none;">
 
 <div class="mb-3">
 <label>Quantity</label>
-<input type="number" name="quantity" class="form-control" required min="1">
+<input type="number" id="qty" name="quantity" class="form-control" required min="1">
 </div>
 
 
@@ -435,6 +436,27 @@ document.getElementById("designSelect").addEventListener("change", function() {
         customField.required = false;
         customField.value = "";
     }
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+    const material = document.getElementById("material");
+    const qty = document.getElementById("qty");
+
+    material.addEventListener("change", function(){
+
+        let selected = material.options[material.selectedIndex];
+        let stock = parseInt(selected.getAttribute("data-stock")) || 0;
+
+        let suggested = stock >= 50 ? 50 : stock;
+
+        qty.value = suggested;
+        qty.max = stock;
+
+    });
+
 });
 </script>
 

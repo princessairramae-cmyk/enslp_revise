@@ -145,6 +145,12 @@ data-price="<?= $row['selling_price'] ?>"
 <input type="number" name="quantity" class="form-control" required>
 </div>
 
+<div class="mb-3">
+<label>Target Date (Pick-up Date)</label>
+<input type="date" name="target_date" min="<?= date('Y-m-d') ?>" class="form-control" required>
+</div>
+
+
 <button type="submit" name="submit_order" class="btn btn-submit w-100">
 Submit Order
 </button>
@@ -154,8 +160,8 @@ Submit Order
 <?php
 if(isset($_POST['submit_order'])){
     $stmt = $conn->prepare("
-    INSERT INTO orders (client_name, contact, email, order_details, quantity)
-    VALUES (?,?,?,?,?)
+   INSERT INTO orders (client_name, contact, email, order_details, quantity, target_date)
+VALUES (?,?,?,?,?,?)
     ");
     
     $stmt->execute([
@@ -163,7 +169,8 @@ if(isset($_POST['submit_order'])){
         $_POST['contact'],
         $_POST['email'],
         $_POST['order_details'],
-        $_POST['quantity']
+        $_POST['quantity'],
+        $_POST['target_date']
     ]);
 
     echo "<div class='alert alert-success mt-3 text-center'>

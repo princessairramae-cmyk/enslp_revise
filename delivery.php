@@ -162,8 +162,8 @@ try {
     $mail->isSMTP();
     $mail->Host       = 'smtp.gmail.com';
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'prncssrrm11@gmail.com';
-    $mail->Password   = 'qjsd vwlh darr rvse';
+    $mail->Username   = 'enslpinc.111@gmail.com';
+    $mail->Password   = 'spjk wgsu cjgu xjxx';
     $mail->SMTPSecure = 'tls';
     $mail->Port       = 587;
 
@@ -173,7 +173,7 @@ try {
         $mail->addAddress($wo['client_email'], $wo['client_name']);
     } else {
         // fallback (pwede mo palitan email mo)
-        $mail->addAddress('prncssrrm11@gmail.com', $wo['client_name']);
+        $mail->addAddress('enslpinc.111@gmail.com', $wo['client_name']);
     }
 
     $mail->isHTML(true);

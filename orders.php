@@ -148,12 +148,12 @@ if(isset($_GET['reject'])){
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'prncssrrm11@gmail.com';
-        $mail->Password = 'qjsd vwlh darr rvse';
+        $mail->Username = 'enslpinc.111@gmail.com';
+        $mail->Password = 'spjk wgsu cjgu xjxx';
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
 
-        $mail->setFrom('your_email@gmail.com', 'EnSLP Inc.');
+        $mail->setFrom('enslpinc.111@gmail.com', 'EnSLP Inc.');
         $mail->addAddress($email);
 
         $mail->isHTML(true);
@@ -282,6 +282,7 @@ Total Orders: <span class="badge bg-primary"><?= $total ?></span>
 <th>Details</th>
 <th>Qty</th>
 <th>Status</th>
+<th>Target Date</th>
 <th>Action</th>
 </tr>
 </thead>
@@ -291,6 +292,7 @@ Total Orders: <span class="badge bg-primary"><?= $total ?></span>
 <tr>
 <td><?= htmlspecialchars($row['client_name']) ?></td>
 <td><?= htmlspecialchars($row['order_details']) ?></td>
+
 <td><?= $row['quantity'] ?></td>
 
 <td>
@@ -305,6 +307,8 @@ if($status == 'Pending'){
 }
 ?>
 </td>
+
+<td><?= $row['target_date'] ?></td>
 
 <td>
 <?php if($row['status'] == 'Pending'): ?>

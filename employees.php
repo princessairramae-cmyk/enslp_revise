@@ -456,7 +456,7 @@ title="Delete"
 
 <div class="mb-3">
 <label>Salary Type</label>
-<select name="salary_type" class="form-control">
+<select name="salary_type" id="salary_type" class="form-control">
 <option>Daily</option>
 <option>Monthly</option>
 </select>
@@ -464,7 +464,7 @@ title="Delete"
 
 <div class="mb-3">
 <label>Salary Amount</label>
-<input type="number" name="salary_amount" class="form-control">
+<input type="number" name="salary_amount" id="salary_amount" class="form-control">
 </div>
 
 <div class="mb-3">
@@ -590,6 +590,26 @@ document.getElementById('edit_contact').value = btn.dataset.contact;
 </script>
 
 <?php include 'footer.php'; ?>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+    const salaryType = document.getElementById("salary_type");
+    const salaryAmount = document.getElementById("salary_amount");
+
+    salaryType.addEventListener("change", function(){
+
+        if(salaryType.value === "Monthly"){
+            salaryAmount.value = 30000;
+        }
+        else if(salaryType.value === "Daily"){
+            salaryAmount.value = 20000;
+        }
+
+    });
+
+});
+</script>
 </body>
 </html>
 ```

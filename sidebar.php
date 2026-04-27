@@ -222,6 +222,11 @@ href="#logisticsFlow">
 </a>
 
 <!-- REPORTS -->
+<a href="accounting.php" class="nav-link <?= ($current_page=='accounting.php')?'active':'' ?>">
+<i class="bi bi-bar-chart"></i> Accounting
+</a>
+
+<!-- REPORTS -->
 <a href="reports.php" class="nav-link <?= ($current_page=='reports.php')?'active':'' ?>">
 <i class="bi bi-bar-chart"></i> Reports
 </a>
