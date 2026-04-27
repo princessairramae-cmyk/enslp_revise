@@ -73,12 +73,12 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'prncssrrm11@gmail.com'; // PALITAN MO
-        $mail->Password = 'qjsd vwlh darr rvse';    // APP PASSWORD
+        $mail->Username = 'enslpinc.111@gmail.com'; // gmail 
+        $mail->Password = 'spjk wgsu cjgu xjxx';    // APP PASSWORD
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
 
-        $mail->setFrom('enslp_inc@gmail.com', 'EnSLP Inc,');
+        $mail->setFrom('enslpinc.111@gmail.com', 'EnSLP Inc,');
         $mail->addAddress($email);
 
         $mail->isHTML(true);
