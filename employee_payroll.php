@@ -17,7 +17,7 @@ SELECT
     att_date,
     time_in,
     time_out,
-    TIMESTAMPDIFF(HOUR, time_in, time_out) as hours
+    TIMESTAMPDIFF(MINUTE, time_in, time_out) / 60 as hours
 FROM attendance
 WHERE employee_id = ?
 ORDER BY att_date DESC
@@ -65,10 +65,20 @@ background:#f8f9fa;
 <div class="main-content">
 <div class="container-fluid">
 
-<!-- 🔙 BACK BUTTON -->
-<a href="payroll.php" class="btn btn-secondary mb-3">
-← Back to Payroll
-</a>
+<div class="d-flex justify-content-between align-items-center mb-3">
+
+    <!-- LEFT -->
+    <a href="payroll.php" class="btn btn-secondary">
+        ← Back to Payroll
+    </a>
+
+    <!-- RIGHT -->
+    <a href="print_payslip.php?id=<?php echo $emp_id; ?>" 
+       class="btn btn-success">
+       🖨 Print Payslip
+    </a>
+
+</div>
 
 <!-- 🔥 EMPLOYEE HEADER -->
 <div class="card shadow-sm mb-4">
@@ -163,6 +173,8 @@ $salary = $total_hours * $rate;
 <h4 class="text-primary"><?php echo $total_hours; ?> hrs</h4>
 </div>
 </div>
+
+
 
 <div class="col-md-4">
 <div class="card shadow-sm p-3">

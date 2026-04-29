@@ -235,19 +235,26 @@ value="<?= $_GET['to'] ?? '' ?>">
 
 <?php
 
+$today = date("Y-m-d");
+
 $sql = "
 SELECT a.*,e.full_name
 FROM attendance a
 JOIN employees e ON e.id=a.employee_id
-WHERE 1
+WHERE a.att_date = ?
 ";
 
+$params = [$today];
 $params = [];
 
 if(!empty($_GET['from']) && !empty($_GET['to'])){
-    $sql .= " AND att_date BETWEEN ? AND ?";
-    $params[] = $_GET['from'];
-    $params[] = $_GET['to'];
+    $sql = "
+    SELECT a.*,e.full_name
+    FROM attendance a
+    JOIN employees e ON e.id=a.employee_id
+    WHERE a.att_date BETWEEN ? AND ?
+    ";
+    $params = [$_GET['from'], $_GET['to']];
 }
 
 $sql .= " ORDER BY a.id DESC";
